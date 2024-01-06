@@ -1,0 +1,42 @@
+import requests from '@/pages/api/requests';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BsInfoLg } from "react-icons/bs";
+
+const Main = () => {
+    const [movies, setMovies] = useState([]);
+
+    const movie = movies[Math.floor(Math.random() * movies.length)]
+
+    useEffect(() => {
+        axios.get(requests.requestPopular).then((response) => {
+            setMovies(response.data.results)
+        });
+    }, [])
+    console.log(movie)
+
+  return (
+    <div className='relative w-full h-[56.25vw] text-white'>
+        <div className='w-full h-full'>
+            <div className='absolute w-full h-[56.25vw] bg-gradient-to-r from-black'></div>
+            <img className='w-full h-full object-cover' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title} />
+            <div className='absolute top-[30%] md:top-[40%] ml-4 md:ml-16'>
+                <p className='text-1xl md:text-4xl h-full w-[50%] lg:text-6xl font-bold drop-shadow-xl'>
+                    {movie?.title}
+                </p>
+                <p className='text-white text-[10px] md:text-md mt-3 md:mt-8 md:w-[80%] lg:w-[50%] drop-shadow-xl'>
+                    {movie?.overview}
+                </p>
+                <div className='flex flex-row items-center mt-3 md:mt-4 gap-3'>
+                    <button className='bg-white bg-opacity-30 py-1 md:py-2 px-2 md:px-4 rounded-md w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition'>
+                        <BsInfoLg className="mr-1" />
+                        More Info
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}
+
+export default Main
