@@ -1,9 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'; 
+import FavoriteButton from './FavoriteButton';
 
 const Movie = ({ movie }) => {
-    const [like, setLike] = useState(false);
 
   return (
     <div className='inline-block cursor-pointer relative p-2 w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] group'>
@@ -16,9 +14,7 @@ const Movie = ({ movie }) => {
             <p className='white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center'>
                 {movie?.title || movie?.name}
             </p>
-            <p>
-                {like ? <FaHeart className="absolute top-4 left-4 text-gray-300" /> : <FaRegHeart className="absolute top-4 left-4 text-gray-300" />}
-            </p>
+            <FavoriteButton movieId={movie?.id} />
         </div>
     </div>
   )

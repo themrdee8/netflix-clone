@@ -2,6 +2,7 @@ import requests from '@/pages/api/requests';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BsInfoLg } from "react-icons/bs";
+import { FaPlay } from "react-icons/fa6";
 
 const Main = () => {
     const [movies, setMovies] = useState([]);
@@ -39,6 +40,10 @@ const Main = () => {
                     {trancateString(movie?.overview, 180)}
                 </p>
                 <div className='flex flex-row items-center mt-3 md:mt-4 gap-3'>
+                    <button className='bg-white py-1 md:py-2 rounded-md text-black flex flex-row items-center text-center w-auto px-2 md:px-4 font-semibold hover:bg-neutral-300 transition text-xs lg:text-lg'>
+                        <FaPlay className='mr-1' />
+                        Play
+                    </button>
                     <button className='bg-white bg-opacity-30 py-1 md:py-2 px-2 md:px-4 rounded-md w-auto text-xs lg:text-lg font-semibold flex flex-row items-center hover:bg-opacity-20 transition'>
                         <BsInfoLg className="mr-1" />
                         More Info

@@ -22,7 +22,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
 const Profiles = () => {
     const router = useRouter();
-    const { data: user } = useCurrentUser();
+    const { data } = useCurrentUser();
 
   return (
     <div className="flex h-full justify-center items-center">
@@ -36,7 +36,7 @@ const Profiles = () => {
                             <img src="/images/default-slate.png" alt="Profile image" />
                         </div>
                         <div className="mt-4 text-gray-400 text-center group-hover:text-white">
-                            {user?.name}
+                            {data?.name}
                         </div>
                     </div>
 
